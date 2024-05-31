@@ -1,0 +1,126 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Formulario de Medicos</strong>
+      </c-card-header>
+      <c-card-body>
+        <form cForm>
+          <div class="mb-3">
+            <label cLabel for="nombre">Nombre</label>
+            <input
+              cFormControl
+              id="nombre"
+              placeholder="ingrese nombre"
+              [(ngModel)]="medicoModelo.name"
+              type="text"
+              name="name"
+            />
+          </div>
+          <div class="mb-3">
+            <label cLabel for="apellido">Apellido</label>
+            <input
+              cFormControl
+              id="apellido"
+              placeholder="ingrese Apellido"
+              type="text"
+              name="lastName"
+              [(ngModel)]="medicoModelo.lastName"
+            />
+          </div>
+          <div class="mb-3">
+            <label cLabel for="telefono">Telefono</label>
+            <input
+              cFormControl
+              id="telefono"
+              placeholder="ingrese telefono"
+              type="number"
+              name="phone"
+              [(ngModel)]="medicoModelo.phone"
+            />
+          </div>
+          <div class="mb-3">
+            <label cLabel for="especialidad">Especialidad</label>
+            <input
+              cFormControl
+              id="Especialidad"
+              placeholder="ingrese Especialidad"
+              type="text"
+              name="specialty"
+              [(ngModel)]="medicoModelo.specialty"
+            />
+          </div>
+          <div class="mb-3">
+            <label cLabel for="usuario">Usuario</label>
+            <input
+              cFormControl
+              id="usuario"
+              type="text"
+              name="usuario"
+              [(ngModel)]="medicoModelo.usuario"
+            />
+            <!-- <select  aria-label="Seleccione usuario" cSelect >
+                <option></option>
+                <option value="664407b69616a061c8547132">xiac</option>
+                <option value="2">Esteban</option>
+                <option value="3">Esther</option>
+              </select> -->
+          </div>
+          <button
+            (click)="guardarMedico()"
+            cButton
+            class="me-1"
+            color="primary"
+            type="submit"
+          >
+            Guardar
+          </button>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <table cTable>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Especialidad</th>
+          <th></th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for ( medico of listaMedicos; track medico; ){
+        <tr>
+          <th scope="row">1</th>
+          <td>{{ medico.name }}</td>
+          <td>{{ medico.lastName }}</td>
+          <td>{{ medico.phone }}</td>
+          <td>{{ medico.specialty }}</td>
+          <td>
+            <button
+              cButton
+              color="warning"
+              variant="outline"
+              (click)="verMedico(medico)"
+            >
+              Editar
+            </button>
+            <button
+              (click)="eliminarMedico(medico)"
+              cButton
+              color="danger"
+              variant="outline"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </c-col>
+</c-row>
